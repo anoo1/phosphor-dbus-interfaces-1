@@ -92,6 +92,7 @@ generated_others += custom_target(
     ],
 )
 
+subdir('Redundancy')
 subdir('ScheduledHostTransition')
 generated_others += custom_target(
     'xyz/openbmc_project/State/ScheduledHostTransition__markdown'.underscorify(),

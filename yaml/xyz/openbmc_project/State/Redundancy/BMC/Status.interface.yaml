@@ -1,0 +1,52 @@
+description: >
+    Relevant information to describe the status of a BMC in a redundant BMC
+    environment.
+properties:
+    - name: Version
+      type: int32
+      description: >
+          The version number of this data format.
+    - name: Position
+      type: size
+      description: >
+          The detected position of the BMC in the chassis.
+    - name: PreviousRole
+      type: enum[self.Roles]
+      description: >
+          The role that the BMC held before the last BMC reboot.
+    - name: Role
+      type: enum[self.Roles]
+      description: >
+          The currently determined BMC role.
+    - name: RedundancyEnabled
+      type: boolean
+      description: >
+          Whether redundancy is enabled.
+    - name: PassiveRequested
+      type: boolean
+      description: >
+          Whether this BMC has been requested to assume a Passive role.
+    - name: FwVersion
+      type: uint32
+      description: >
+          The hash of the firmware version running on the BMC.
+    - name: Heartbeat
+      type: uint32
+      description: >
+          A counter that is periodically incremented to show that this BMC is
+          alive and running.
+enumerations:
+    - name: Roles
+      description: >
+          The possible BMC role values.
+      values:
+          - name: Unknown
+            description: >
+                The role is undetermined.
+          - name: Active
+            description: >
+                The role of a fully functioning BMC.
+          - name: Passive
+            description: >
+                The role of a BMC limited in functionality, such as serving as a
+                backup.
